@@ -1,15 +1,15 @@
-// import { createStore, combineReducers } from 'redux';
-// import expensesReducer from '../reducers/expenses';
-// import filtersReducer from '../reducers/filters';
+import { createStore, combineReducers } from 'redux';
+import booksReducer from '../reducers/books';
+import searchReducer from '../reducers/search';
 
-// export default () => {
-//   const store = createStore(
-//     combineReducers({
-//       expenses: expensesReducer,
-//       filters: filtersReducer
-//     }),
-//     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-//   );
+export default () => {
+  const store = createStore(
+    combineReducers({
+      books: booksReducer,
+      search: searchReducer
+    }),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  );
 
-//   return store;
-// };
+  return store;
+};

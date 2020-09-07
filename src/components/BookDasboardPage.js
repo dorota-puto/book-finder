@@ -2,7 +2,8 @@ import React from 'react';
 
 const BookDashboardPage = () => (
   <div>
-    This is from my book dashboard page component
+    <input type="text" placeholder="Type book title"></input>
+    <button>Search</button>
   </div>
 );
 
