@@ -14,7 +14,8 @@ const store = configureStore();
 store.dispatch(addBook({id: '111', title: 'Ania z Zielonego Wzgórza', authors: 'Lucy Mound Montgomery'}));
 store.dispatch(addBook({id: '222', title: 'Clean Code', authors: 'Martin'}));
 
-console.log(store.getState());
+const state = store.getState();
+console.log(state);
 
 const jsx = (
   <Provider store={store}>
