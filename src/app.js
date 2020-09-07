@@ -8,11 +8,13 @@ import { searchBook } from './actions/search';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
+import getResults from './selectors/books'
+import regeneratorRuntime from "regenerator-runtime";
 
 const store = configureStore();
 
-store.dispatch(addBook({id: '111', title: 'Ania z Zielonego Wzgórza', authors: 'Lucy Mound Montgomery'}));
-store.dispatch(addBook({id: '222', title: 'Clean Code', authors: 'Martin'}));
+store.dispatch(addBook({ id: '111', title: 'Ania z Zielonego Wzgórza', authors: 'Lucy Mound Montgomery' }));
+store.dispatch(addBook({ id: '222', title: 'Clean Code', authors: 'Martin' }));
 
 const state = store.getState();
 console.log(state);
@@ -24,3 +26,14 @@ const jsx = (
 );
 
 ReactDOM.render(jsx, document.getElementById('app'));
+
+const foo = async () => {
+
+  try {
+    await getResults('clean')
+  } catch (error) {
+    console.log('something was wrong')
+  }
+}
+foo();
+

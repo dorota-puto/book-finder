@@ -1,12 +1,29 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import BookList from './BookList';
+import { searchBook } from '../actions/search';
 
-const BookDashboardPage = () => (
-    <div>
-        <input type="text" placeholder="Type book title"></input>
-        <button>Search</button>
-        <BookList />
-    </div>
-);
+class BookDashboardPage extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    onChange = (e) => {
+        const query = e.target.value;
+        this.props.dispatch(searchBook(query))
+    }
+    render() {
+        return (
+            <div>
+                <input
+                    type="text"
+                    placeholder="Type book title"
+                    autoFocus
+                    onChange={this.onChange}
+                />
+                <BookList />
+            </div>
+        );
+    }
+}
 
-export default BookDashboardPage;
+export default connect()(BookDashboardPage);
