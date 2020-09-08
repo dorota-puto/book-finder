@@ -8,8 +8,6 @@ import { searchBook } from './actions/search';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
-import getResults from './selectors/books'
-import regeneratorRuntime from "regenerator-runtime";
 
 const store = configureStore();
 
@@ -26,14 +24,3 @@ const jsx = (
 );
 
 ReactDOM.render(jsx, document.getElementById('app'));
-
-const foo = async () => {
-
-  try {
-    await getResults('clean')
-  } catch (error) {
-    console.log('something was wrong')
-  }
-}
-foo();
-

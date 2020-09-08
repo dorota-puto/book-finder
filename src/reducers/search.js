@@ -1,6 +1,6 @@
 
 const searchReducerDefaultState = {
-    text: ''
+    query: ''
 };
 
 export default (state = searchReducerDefaultState, action) => {
