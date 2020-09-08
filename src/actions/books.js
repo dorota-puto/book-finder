@@ -1,4 +1,3 @@
-//ADD BOOK
 
 export const addBook = ({ id = '', title = '', authors = '', image = '', description = '' } = {}) => ({
     type: 'ADD_BOOK',
@@ -9,4 +8,8 @@ export const addBook = ({ id = '', title = '', authors = '', image = '', descrip
         image,
         description
     }
+});
+
+export const deleteBooks = () => ({
+    type: 'DELETE_BOOKS'
 });

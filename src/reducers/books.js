@@ -8,6 +8,10 @@ export default (state = booksReducerDefaultState, action) => {
                 ...state,
                 action.book
             ];
+        case 'DELETE_BOOKS':
+            return [
+                ...booksReducerDefaultState
+            ];
         default:
             return state;
     };

@@ -11,9 +11,6 @@ import 'react-dates/lib/css/_datepicker.css';
 
 const store = configureStore();
 
-store.dispatch(addBook({ id: '111', title: 'Ania z Zielonego Wzgórza', authors: 'Lucy Mound Montgomery' }));
-store.dispatch(addBook({ id: '222', title: 'Clean Code', authors: 'Martin' }));
-
 const state = store.getState();
 console.log(state);
 

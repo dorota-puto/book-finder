@@ -4,11 +4,11 @@ import BookList from './BookList';
 import { searchBook } from '../actions/search';
 import getResults from '../selectors/books'
 import regeneratorRuntime from "regenerator-runtime";
+import { addBook, deleteBooks } from '../actions/books';
 
 class BookDashboardPage extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             text: ''
         };
@@ -22,11 +22,17 @@ class BookDashboardPage extends React.Component {
     };
     onSubmit = async (e) => {
         e.preventDefault();
-
+        this.props.dispatch(deleteBooks())
+        
         if (this.props.query) {
             try {
-                const result = await getResults(this.props.query)
-                console.log(result)
+                const books = await getResults(this.props.query)
+                console.log(books)
+                books.forEach((book) => {
+                    const info = book.volumeInfo
+                    this.props.dispatch(addBook({ ...book, ...info }))
+                }
+                )
             } catch (error) {
                 console.log('something was wrong')
             }
