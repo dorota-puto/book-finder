@@ -10,7 +10,8 @@ class BookDashboardPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            text: ''
+            text: '',
+            error: ''
         };
     }
     onChange = (e) => {
@@ -23,18 +24,18 @@ class BookDashboardPage extends React.Component {
     onSubmit = async (e) => {
         e.preventDefault();
         this.props.dispatch(deleteBooks())
-        
+
         if (this.props.query) {
+            this.setState(() => ({ error: '' }));
             try {
                 const books = await getResults(this.props.query)
-                console.log(books)
                 books.forEach((book) => {
-                    const info = book.volumeInfo
-                    this.props.dispatch(addBook({ ...book, ...info }))
+                    this.props.dispatch(addBook({ ...book, ...book.volumeInfo, ...book.volumeInfo.imageLinks }))
+                    console.log(this.props.books)
                 }
                 )
-            } catch (error) {
-                console.log('something was wrong')
+            } catch (err) {
+                this.setState({ error: 'No books were found' });
             }
         }
         this.setState({
@@ -52,6 +53,7 @@ class BookDashboardPage extends React.Component {
                         autoFocus
                         onChange={this.onChange}
                     />
+                    {this.state.error && <p>{this.state.error}</p>}
                 </form>
                 <BookList />
             </div>
@@ -61,7 +63,8 @@ class BookDashboardPage extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        query: state.search.query
+        query: state.search.query,
+        books: state.books
     };
 };
 
