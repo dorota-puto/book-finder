@@ -4,6 +4,7 @@ import BookDashboardPage from '../components/BookDasboardPage'
 import NotFoundPage from '../components/NotFoundPage';
 import Header from '../components/Header';
 import FavouritesPage from '../components/FavouritesPage'
+import BookDetailsPage from '../components/BookDetailsPage';
 
 const AppRouter = () => (
   <BrowserRouter>
@@ -12,6 +13,7 @@ const AppRouter = () => (
       <Switch>
         <Route path="/" component={BookDashboardPage} exact={true} />
         <Route path="/favourites" component={FavouritesPage} />
+        <Route path="/details/:id" component={BookDetailsPage}/>
         <Route component={NotFoundPage} />
       </Switch>
     </div>

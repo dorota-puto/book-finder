@@ -1,12 +1,26 @@
 
-export const addBook = ({ id = '', title = '', authors = '', thumbnail = '', description = '' } = {}) => ({
+export const addBook = ({
+    id = '',
+    title = '',
+    subtitle = '',
+    authors = '',
+    publisher = '',
+    categories='',
+    description = '',
+    thumbnail = '',
+    previewLink= ''
+} = {}) => ({
     type: 'ADD_BOOK',
     book: {
         id,
         title,
+        subtitle,
         authors,
+        publisher,
+        categories,
         thumbnail,
-        description
+        description,
+        previewLink
     }
 });
 

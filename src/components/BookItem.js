@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const BookItem = ({ id, title, authors, thumbnail, description }) => (
+const BookItem = ({ id, title, thumbnail }) => (
     <div>
-        <h3>
-            <img src={`${thumbnail}`} alt={`${title}`} />
-        </h3>
+        <Link to={`/details/${id}`}>
+            <img src={thumbnail} alt={title} />
+        </Link>
     </div>
 );
 
