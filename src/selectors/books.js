@@ -1,5 +1,4 @@
 import axios from 'axios';
-import regeneratorRuntime from "regenerator-runtime";
 
 export default async (query) => {
     try {

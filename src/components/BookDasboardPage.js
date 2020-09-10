@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import BookList from './BookList';
 import { searchBook } from '../actions/search';
 import getResults from '../selectors/books'
-import regeneratorRuntime from "regenerator-runtime";
 import { addBook, deleteBooks } from '../actions/books';
 
 class BookDashboardPage extends React.Component {
@@ -35,6 +34,7 @@ class BookDashboardPage extends React.Component {
                 }
                 )
             } catch (err) {
+                console.log('err='+err)
                 this.setState({ error: 'No books were found' });
             }
         }

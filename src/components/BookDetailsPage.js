@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 
+
 class BookDetailsPage extends React.Component {
 
     onClick = () => window.open(this.props.book.previewLink, "_blank")
@@ -14,7 +15,7 @@ class BookDetailsPage extends React.Component {
                 {this.props.book.subtitle && <p>Subtitle: {this.props.book.subtitle}</p>}
                 {this.props.book.authors && <p>Authors: {this.props.book.authors}</p>}
                 {this.props.book.publisher && <p>Publisher: {this.props.book.publisher}</p>}
-                <p>{this.props.book.description}</p>
+                <div dangerouslySetInnerHTML={{ __html: this.props.book.description }} />
                 <button onClick={this.onClick}>PREVIEW</button>
             </div>
         )

@@ -5,10 +5,10 @@ export const addBook = ({
     subtitle = '',
     authors = '',
     publisher = '',
-    categories='',
+    categories = '',
     description = '',
     thumbnail = '',
-    previewLink= ''
+    previewLink = ''
 } = {}) => ({
     type: 'ADD_BOOK',
     book: {
@@ -22,6 +22,12 @@ export const addBook = ({
         description,
         previewLink
     }
+});
+
+export const addBookDescription = (id,  updates ) => ({
+    type: 'ADD_BOOK_DESCRIPTION',
+    id,
+    updates
 });
 
 export const deleteBooks = () => ({
