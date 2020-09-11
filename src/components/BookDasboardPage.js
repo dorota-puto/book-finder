@@ -34,7 +34,6 @@ class BookDashboardPage extends React.Component {
                 }
                 )
             } catch (err) {
-                console.log('err='+err)
                 this.setState({ error: 'No books were found' });
             }
         }
