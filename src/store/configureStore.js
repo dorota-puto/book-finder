@@ -1,7 +1,10 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware , compose} from 'redux';
 import booksReducer from '../reducers/books';
 import searchReducer from '../reducers/search';
 import favouritesReducer from '../reducers/favourites'
+import thunk from 'redux-thunk';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export default () => {
   const store = createStore(
@@ -10,7 +13,7 @@ export default () => {
       search: searchReducer,
       favourites: favouritesReducer
     }),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    composeEnhancers(applyMiddleware(thunk))
   );
 
   return store;

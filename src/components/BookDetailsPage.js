@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addBookToFavourites, removeBookFromFavourites } from '../actions/favourites';
+import { startAddBookToFavourites, removeBookFromFavourites } from '../actions/favourites';
 
 class BookDetailsPage extends React.Component {
     constructor(props) {
@@ -13,7 +13,7 @@ class BookDetailsPage extends React.Component {
 
     onClickFavourite = () => {
         if (!this.props.isFavourite) {
-            this.props.dispatch(addBookToFavourites({ ...this.state }));
+            this.props.dispatch(startAddBookToFavourites({ ...this.state }));
         } else {
             this.props.dispatch(removeBookFromFavourites({ id: this.state.id }))
         }
