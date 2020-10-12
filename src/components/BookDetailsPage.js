@@ -1,12 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { startAddBookToFavourites, removeBookFromFavourites } from '../actions/favourites';
+import { startAddBookToFavourites, startRemoveBookFromFavourites } from '../actions/favourites';
 
 class BookDetailsPage extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = props.book ? { ...props.book } : { ...props.isFavourite }
+        this.state = props.isFavourite ? { ...props.isFavourite } : { ...props.book }
+    }
+
+    componentDidUpdate(prevProps){
+        if(prevProps.isFavourite !== this.props.isFavourite){
+            this.setState({          
+                ...this.props.isFavourite
+            });
+        }
     }
 
     onClick = () => window.open(this.props.book.previewLink, "_blank");
@@ -15,7 +23,7 @@ class BookDetailsPage extends React.Component {
         if (!this.props.isFavourite) {
             this.props.dispatch(startAddBookToFavourites({ ...this.state }));
         } else {
-            this.props.dispatch(removeBookFromFavourites({ id: this.state.id }))
+            this.props.dispatch(startRemoveBookFromFavourites({ id: this.state.id, dataBaseId: this.state.dataBaseId }))
         }
     }
 
@@ -38,11 +46,11 @@ class BookDetailsPage extends React.Component {
         );
     }
 }
-    const mapStateToProps = (state, props) => {
-        return {
-            book: state.books.find((book) => book.id === props.match.params.id),
-            favourites: state.favourites,
-            isFavourite: state.favourites.find((book) => book.id === props.match.params.id)
-        }
+const mapStateToProps = (state, props) => {
+    return {
+        book: state.books.find((book) => book.id === props.match.params.id),
+        favourites: state.favourites,
+        isFavourite: state.favourites.find((book) => book.id === props.match.params.id)
     }
-    export default connect(mapStateToProps)(BookDetailsPage);
+}
+export default connect(mapStateToProps)(BookDetailsPage);

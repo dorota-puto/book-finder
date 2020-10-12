@@ -33,10 +33,31 @@ export const startAddBookToFavourites = (bookData = {}) => {
 
         database.ref('favourites').push(book).then((ref) => {
             dispatch(addBookToFavourites({
-                id: ref.key,
+                dataBaseId: ref.key,
                 ...book
             }));
         })
+    };
+};
+
+export const setFavourites = (favourites) => ({
+    type: 'SET_FAVOURITES',
+    favourites
+});
+
+export const startSetFavourites = () => {
+    return (dispatch) => {
+        return database.ref('favourites').once('value').then((snapshot) => {
+            const favourites = [];
+
+            snapshot.forEach((childSnapshot) => {
+                favourites.push({
+                    dataBaseId: childSnapshot.key,
+                    ...childSnapshot.val()
+                });
+            });
+            dispatch(setFavourites(favourites));
+        });
     };
 };
 
@@ -44,3 +65,11 @@ export const removeBookFromFavourites = ({ id } = {}) => ({
     type: 'REMOVE_FROM_FAVOURITES',
     id
 });
+
+export const startRemoveBookFromFavourites = ({ id, dataBaseId } = {}) => {
+    return (dispatch) => {
+        return database.ref(`favourites/${dataBaseId}`).remove().then(() => {
+            dispatch(removeBookFromFavourites({ id }))
+        })
+    };
+};

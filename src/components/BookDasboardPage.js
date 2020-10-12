@@ -30,7 +30,6 @@ class BookDashboardPage extends React.Component {
                 const books = await getResults(this.props.query)
                 books.forEach((book) => {
                     this.props.dispatch(addBook({ ...book, ...book.volumeInfo, ...book.volumeInfo.imageLinks }))
-                    console.log(this.props.books)
                 }
                 )
             } catch (err) {
