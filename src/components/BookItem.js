@@ -1,20 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addBookDescription } from '../actions/books';
-import getResult from '../selectors/book';
+import { startAddBookDescription } from '../actions/books';
 
 const BookItem = ({ id, title, thumbnail, dispatch }) => {
 
-    const onClick = async () => {
-        try {
-            const description = await getResult(id);
-            if (description) {
-                dispatch(addBookDescription(id, { description: `${description}` }))
-            }
-        } catch (err) {
-
-        }
+    const onClick = () => {
+        dispatch(startAddBookDescription(id));
     };
 
     return (

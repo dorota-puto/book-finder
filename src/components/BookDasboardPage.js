@@ -2,9 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import BookList from './BookList';
 import { searchBook } from '../actions/search';
-import getResults from '../selectors/books'
-import { addBook, deleteBooks } from '../actions/books';
-
+import { startAddBook, deleteBooks } from '../actions/books';
 class BookDashboardPage extends React.Component {
     constructor(props) {
         super(props);
@@ -13,6 +11,19 @@ class BookDashboardPage extends React.Component {
             error: ''
         };
     }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.books !== this.props.books && this.props.books.length > 0) {
+            this.setState({
+                error: ''
+            });
+        } else if (prevProps.books !== this.props.books && this.props.books.length == 0) {
+            this.setState({
+                error: 'No books were found'
+            });
+        }
+    }
+
     onChange = (e) => {
         const query = e.target.value;
         this.setState({
@@ -20,26 +31,19 @@ class BookDashboardPage extends React.Component {
         });
         this.props.dispatch(searchBook(query))
     };
+
     onSubmit = async (e) => {
         e.preventDefault();
         this.props.dispatch(deleteBooks())
 
         if (this.props.query) {
-            this.setState(() => ({ error: '' }));
-            try {
-                const books = await getResults(this.props.query)
-                books.forEach((book) => {
-                    this.props.dispatch(addBook({ ...book, ...book.volumeInfo, ...book.volumeInfo.imageLinks }))
-                }
-                )
-            } catch (err) {
-                this.setState({ error: 'No books were found' });
-            }
+            this.props.dispatch(startAddBook(this.props.query))
         }
         this.setState({
             text: ''
         });
     };
+
     render() {
         return (
             <div>

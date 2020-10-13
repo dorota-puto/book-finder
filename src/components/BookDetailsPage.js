@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { startAddBookToFavourites, startRemoveBookFromFavourites } from '../actions/favourites';
-
 class BookDetailsPage extends React.Component {
     constructor(props) {
         super(props);
@@ -9,10 +8,15 @@ class BookDetailsPage extends React.Component {
         this.state = props.isFavourite ? { ...props.isFavourite } : { ...props.book }
     }
 
-    componentDidUpdate(prevProps){
-        if(prevProps.isFavourite !== this.props.isFavourite){
-            this.setState({          
+    componentDidUpdate(prevProps) {
+        if (prevProps.isFavourite !== this.props.isFavourite) {
+            this.setState({
                 ...this.props.isFavourite
+            });
+        }
+        if (this.props.book && prevProps.book.description !== this.props.book.description) {
+            this.setState({
+               description: this.props.book.description
             });
         }
     }
