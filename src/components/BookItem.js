@@ -10,7 +10,7 @@ const BookItem = ({ id, title, thumbnail, dispatch }) => {
     };
 
     return (
-        <div>
+        <div className="card">
             <Link to={`/details/${id}`}
                 onClick={onClick}
             >

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import BookList from './BookList';
 import Header from './Header'
 import { searchBook } from '../actions/search';
-import { startAddBook, deleteBooks } from '../actions/books';
+import { startAddBook, deleteBooks} from '../actions/books';
 class BookDashboardPage extends React.Component {
     constructor(props) {
         super(props);
@@ -48,7 +48,7 @@ class BookDashboardPage extends React.Component {
     render() {
         return (
             <div className="box-layout">
-            <Header />
+                <Header />
                 <form onSubmit={this.onSubmit}>
                     <input className="text-input"
                         value={this.state.text}

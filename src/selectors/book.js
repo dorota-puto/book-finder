@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default async (volumeId) => {
+export const getDescription = async (volumeId) => {
     try {
         const res = await axios(`https://www.googleapis.com/books/v1/volumes/${volumeId}`);
         return res.data.volumeInfo.description
@@ -8,3 +8,12 @@ export default async (volumeId) => {
 
     }
 };
+
+// export const getImage = async (volumeId) => {
+//     try {
+//         const res = await axios(`https://www.googleapis.com/books/v1/volumes/${volumeId}`);
+//         return res.data.volumeInfo.imageLinks.medium
+//     } catch (error) {
+
+//     }
+// };

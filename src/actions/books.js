@@ -1,4 +1,4 @@
-import getResult from '../selectors/book';
+import {getDescription, getImage} from '../selectors/book';
 import getResults from '../selectors/books';
 
 export const addBook = ({
@@ -31,6 +31,7 @@ export const startAddBook = (query) => {
         return getResults(query).then((books) => {
             books.forEach((book) => {
                 dispatch(addBook({ ...book, ...book.volumeInfo, ...book.volumeInfo.imageLinks }))
+                // dispatch(startAddBookImage(book.id))
             });
         }).catch((error) => {
         });
@@ -38,19 +39,27 @@ export const startAddBook = (query) => {
     };
 };
 
-export const addBookDescription = (id, updates) => ({
-    type: 'ADD_BOOK_DESCRIPTION',
+export const addBookUpdates = (id, updates) => ({
+    type: 'ADD_BOOK_UPDATES',
     id,
     updates
 });
 
 export const startAddBookDescription = (id) => {
     return (dispatch) => {
-        return getResult(id).then((description) => {
-            dispatch(addBookDescription(id, { description: `${description}` }))
+        return getDescription(id).then((description) => {
+            dispatch(addBookUpdates(id, { description: `${description}` }))
         })
     };
 };
+
+// export const startAddBookImage = (id) => {
+//     return (dispatch) => {
+//         return getImage(id).then((thumbnail) => {
+//             dispatch(addBookUpdates(id, { thumbnail: `${thumbnail}` }))
+//         })
+//     };
+// }
 
 export const deleteBooks = () => ({
     type: 'DELETE_BOOKS'

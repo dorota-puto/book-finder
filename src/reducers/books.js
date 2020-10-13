@@ -12,7 +12,7 @@ export default (state = booksReducerDefaultState, action) => {
             return [
                 ...booksReducerDefaultState
             ];
-        case 'ADD_BOOK_DESCRIPTION':
+        case 'ADD_BOOK_UPDATES':
             return state.map((book) => {
                 if (book.id === action.id) {
                     return {
