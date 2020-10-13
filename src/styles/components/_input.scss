@@ -1,0 +1,13 @@
+
+.text-input {
+    border: 1px solid #cacccd;
+    background-color: $blue;
+    border-radius: 5rem;
+    height: 30px;
+    font-size: $font-size-small;
+    padding: $s-size;
+  }
+
+.text-input:focus {
+  outline-width: 0;
+}

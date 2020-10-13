@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Header from './Header'
 import { startAddBookToFavourites, startRemoveBookFromFavourites } from '../actions/favourites';
 class BookDetailsPage extends React.Component {
     constructor(props) {
@@ -34,6 +35,7 @@ class BookDetailsPage extends React.Component {
     render() {
         return (
             <div>
+            <Header />
                 <img src={this.state.thumbnail} />
                 <h3>Title: {this.state.title}</h3>
                 {this.state.subtitle && <p>Subtitle: {this.state.subtitle}</p>}

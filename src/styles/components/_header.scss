@@ -1,0 +1,19 @@
+.header {
+  font-size: $font-size-large;
+  font-weight: 800;
+  width: 100rem;
+}
+
+.header__content {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: $s-size 0;
+}
+
+.header__title {
+  color: $red;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+}

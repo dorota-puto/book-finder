@@ -9,11 +9,10 @@ import BookDetailsPage from '../components/BookDetailsPage';
 const AppRouter = () => (
   <BrowserRouter>
     <div>
-      <Header />
       <Switch>
         <Route path="/" component={BookDashboardPage} exact={true} />
         <Route path="/favourites" component={FavouritesPage} />
-        <Route path="/details/:id" component={BookDetailsPage}/>
+        <Route path="/details/:id" component={BookDetailsPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

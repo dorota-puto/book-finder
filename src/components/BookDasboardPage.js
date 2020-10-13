@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import BookList from './BookList';
+import Header from './Header'
 import { searchBook } from '../actions/search';
 import { startAddBook, deleteBooks } from '../actions/books';
 class BookDashboardPage extends React.Component {
@@ -46,9 +47,10 @@ class BookDashboardPage extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="box-layout">
+            <Header />
                 <form onSubmit={this.onSubmit}>
-                    <input
+                    <input className="text-input"
                         value={this.state.text}
                         type="text"
                         placeholder="Type book title"
