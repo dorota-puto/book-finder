@@ -3,24 +3,20 @@ import { connect } from 'react-redux';
 import BookList from './BookList';
 import Header from './Header'
 import { searchBook } from '../actions/search';
-import { startAddBook, deleteBooks} from '../actions/books';
+import { startAddBook, startDeleteBooks } from '../actions/books';
 class BookDashboardPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             text: '',
-            error: ''
+            message: props.message
         };
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.books !== this.props.books && this.props.books.length > 0) {
+        if (prevProps.message !== this.props.message) {
             this.setState({
-                error: ''
-            });
-        } else if (prevProps.books !== this.props.books && this.props.books.length == 0) {
-            this.setState({
-                error: 'No books to show'
+                message: this.props.message
             });
         }
     }
@@ -35,7 +31,7 @@ class BookDashboardPage extends React.Component {
 
     onSubmit = async (e) => {
         e.preventDefault();
-        this.props.dispatch(deleteBooks())
+        this.props.dispatch(startDeleteBooks())
 
         if (this.props.query) {
             this.props.dispatch(startAddBook(this.props.query))
@@ -57,7 +53,7 @@ class BookDashboardPage extends React.Component {
                         autoFocus
                         onChange={this.onChange}
                     />
-                    {this.state.error && <p className="form_error">{this.state.error}</p>}
+                    {this.state.message && <p className="form_error">{this.state.message}</p>}
                 </form>
                 <BookList />
             </div>
@@ -68,7 +64,8 @@ class BookDashboardPage extends React.Component {
 const mapStateToProps = (state) => {
     return {
         query: state.search.query,
-        books: state.books
+        books: state.books,
+        message: state.search.message
     };
 };
 

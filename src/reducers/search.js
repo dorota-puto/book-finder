@@ -1,6 +1,7 @@
 
 const searchReducerDefaultState = {
-    query: ''
+    query: '',
+    message: ''
 };
 
 export default (state = searchReducerDefaultState, action) => {
@@ -9,6 +10,11 @@ export default (state = searchReducerDefaultState, action) => {
             return {
                 ...state,
                 query: action.query
+            }
+        case 'SET_MESSAGE':
+            return {
+                ...state,
+                message: action.message
             }
         default:
             return state;
