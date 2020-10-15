@@ -7,11 +7,15 @@ class FavouritesPage extends React.Component {
 
   render() {
     return (
-      <div className="box-layout">
-      <div className="content">
+      <div className="layout">
       <Header />
+      <div className="book-container">
         {this.props.books && this.props.books.map((book) => {
-          return <BookItem key={book.id} {...book} />
+          return (
+            <div key={book.id}>
+                <BookItem {...book} />
+            </div>
+        )
         })}
       </div>
       

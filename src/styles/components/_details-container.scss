@@ -1,0 +1,27 @@
+
+.details-container {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: $m-size;
+}
+
+.details-header__buttons {
+  display: flex;
+}
+
+.details-header__card {
+  width: 180px;
+  height: 210px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.details-description {
+  text-align:justify;
+} 

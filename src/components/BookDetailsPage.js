@@ -22,7 +22,7 @@ class BookDetailsPage extends React.Component {
         }
     }
 
-    onClick = () => window.open(this.props.book.previewLink, "_blank");
+    onClick = () => window.open(this.state.previewLink, "_blank");
 
     onClickFavourite = () => {
         if (!this.props.isFavourite) {
@@ -34,29 +34,31 @@ class BookDetailsPage extends React.Component {
 
     render() {
         return (
-            <div className="content-container">
+            <div className="layout layout--grey">
                 <Header />
-                <div className="content-container_details">
-                    <div className="card card_det">
-                        <img src={this.state.thumbnail} />
+                <div className="details-container">
+                    <div className="details-header">
+                        <div className="details-header__card">
+                           {this.state.thumbnail && <img src={this.state.thumbnail} />}
+                        </div>
+                        <div className="details-header__buttons">
+                            <button className={`button ${this.props.isFavourite ? "button--love" : ""}`}
+                                onClick={this.onClickFavourite}
+                            >
+                                <ion-icon name="heart"></ion-icon>
+                            </button>
+                            <button className="button" onClick={this.onClick}>PREVIEW</button>
+                        </div>
+
                     </div>
-                    <div className="content-container_buttons">
-                        <button className="button"
-                            onClick={this.onClickFavourite}
-                        >
-                            <ion-icon name="heart"></ion-icon>
-                        </button>
-                        <button className="button" onClick={this.onClick}>PREVIEW</button>
-                    </div>
+
+                    <h3>Title: {this.state.title}</h3>
+                    {this.state.subtitle && <p>Subtitle: {this.state.subtitle}</p>}
+                    {this.state.authors && <p>Authors: {this.state.authors}</p>}
+                    {this.state.publisher && <p>Publisher: {this.state.publisher}</p>}
+                    <div className="details-description" dangerouslySetInnerHTML={{ __html: this.state.description }} />
 
                 </div>
-
-                <h3>Title: {this.state.title}</h3>
-                {this.state.subtitle && <p>Subtitle: {this.state.subtitle}</p>}
-                {this.state.authors && <p>Authors: {this.state.authors}</p>}
-                {this.state.publisher && <p>Publisher: {this.state.publisher}</p>}
-                <div className="text" dangerouslySetInnerHTML={{ __html: this.state.description }} />
-
             </div>
         );
     }

@@ -10,12 +10,11 @@ const BookItem = ({ id, title, thumbnail, dispatch }) => {
     };
 
     return (
-        <div className="card">
+        <div className={`book-container__card ${!thumbnail && "book-container__card--default"}`}>
             <Link to={`/details/${id}`}
                 onClick={onClick}
             >
-                <img src={thumbnail} onError={(e)=>{e.target.onerror = null; e.target.src="/images/book.jpeg"}}/>
-                {!thumbnail &&<p>{title}</p>}
+                {thumbnail ? <img src={thumbnail} /> : <div className="book-container__title">{title}</div>}
             </Link>
         </div>
     );

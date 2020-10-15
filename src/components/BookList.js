@@ -5,7 +5,7 @@ import BookItem from './BookItem';
 const BookList = (props) => {
  
     return (
-        <div className="content">
+        <div className="book-container">
 
             {props.books && props.books.map((book) => {
                 return (

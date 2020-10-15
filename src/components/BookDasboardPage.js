@@ -43,17 +43,17 @@ class BookDashboardPage extends React.Component {
 
     render() {
         return (
-            <div className="box-layout">
+            <div className="layout">
                 <Header />
-                <form onSubmit={this.onSubmit}>
-                    <input className="text-input"
+                <form className="form" onSubmit={this.onSubmit}>
+                    <input className="form__input"
                         value={this.state.text}
                         type="text"
                         placeholder="Type book title..."
                         autoFocus
                         onChange={this.onChange}
                     />
-                    {this.state.message && <p className="form_error">{this.state.message}</p>}
+                    {this.state.message && <p className="form__error">{this.state.message}</p>}
                 </form>
                 <BookList />
             </div>
