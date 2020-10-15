@@ -14,7 +14,8 @@ const BookItem = ({ id, title, thumbnail, dispatch }) => {
             <Link to={`/details/${id}`}
                 onClick={onClick}
             >
-                <img src={thumbnail} alt={title} />
+                <img src={thumbnail} onError={(e)=>{e.target.onerror = null; e.target.src="/images/book.jpeg"}}/>
+                {!thumbnail &&<p>{title}</p>}
             </Link>
         </div>
     );

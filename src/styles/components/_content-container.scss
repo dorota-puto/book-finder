@@ -3,3 +3,13 @@
   padding: 0 $m-size;
   max-width: 100rem;
 }
+
+.content-container_details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.content-container_buttons {
+  display: flex;
+}

@@ -20,7 +20,7 @@ class BookDashboardPage extends React.Component {
             });
         } else if (prevProps.books !== this.props.books && this.props.books.length == 0) {
             this.setState({
-                error: 'No books were found'
+                error: 'No books to show'
             });
         }
     }
@@ -53,11 +53,11 @@ class BookDashboardPage extends React.Component {
                     <input className="text-input"
                         value={this.state.text}
                         type="text"
-                        placeholder="Type book title"
+                        placeholder="Type book title..."
                         autoFocus
                         onChange={this.onChange}
                     />
-                    {this.state.error && <p>{this.state.error}</p>}
+                    {this.state.error && <p className="form_error">{this.state.error}</p>}
                 </form>
                 <BookList />
             </div>

@@ -17,7 +17,7 @@ class BookDetailsPage extends React.Component {
         }
         if (this.props.book && prevProps.book.description !== this.props.book.description) {
             this.setState({
-               description: this.props.book.description
+                description: this.props.book.description
             });
         }
     }
@@ -34,20 +34,29 @@ class BookDetailsPage extends React.Component {
 
     render() {
         return (
-            <div>
-            <Header />
-                <img src={this.state.thumbnail} />
+            <div className="content-container">
+                <Header />
+                <div className="content-container_details">
+                    <div className="card card_det">
+                        <img src={this.state.thumbnail} />
+                    </div>
+                    <div className="content-container_buttons">
+                        <button className="button"
+                            onClick={this.onClickFavourite}
+                        >
+                            <ion-icon name="heart"></ion-icon>
+                        </button>
+                        <button className="button" onClick={this.onClick}>PREVIEW</button>
+                    </div>
+
+                </div>
+
                 <h3>Title: {this.state.title}</h3>
                 {this.state.subtitle && <p>Subtitle: {this.state.subtitle}</p>}
                 {this.state.authors && <p>Authors: {this.state.authors}</p>}
                 {this.state.publisher && <p>Publisher: {this.state.publisher}</p>}
-                <div dangerouslySetInnerHTML={{ __html: this.state.description }} />
-                <button onClick={this.onClick}>PREVIEW</button>
-                <button
-                    onClick={this.onClickFavourite}
-                >
-                    <ion-icon name="heart"></ion-icon>
-                </button>
+                <div className="text" dangerouslySetInnerHTML={{ __html: this.state.description }} />
+
             </div>
         );
     }

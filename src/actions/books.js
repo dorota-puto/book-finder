@@ -1,4 +1,4 @@
-import {getDescription, getImage} from '../selectors/book';
+import { getDescription } from '../selectors/book';
 import getResults from '../selectors/books';
 
 export const addBook = ({
@@ -31,7 +31,6 @@ export const startAddBook = (query) => {
         return getResults(query).then((books) => {
             books.forEach((book) => {
                 dispatch(addBook({ ...book, ...book.volumeInfo, ...book.volumeInfo.imageLinks }))
-                // dispatch(startAddBookImage(book.id))
             });
         }).catch((error) => {
         });
@@ -52,14 +51,6 @@ export const startAddBookDescription = (id) => {
         })
     };
 };
-
-// export const startAddBookImage = (id) => {
-//     return (dispatch) => {
-//         return getImage(id).then((thumbnail) => {
-//             dispatch(addBookUpdates(id, { thumbnail: `${thumbnail}` }))
-//         })
-//     };
-// }
 
 export const deleteBooks = () => ({
     type: 'DELETE_BOOKS'

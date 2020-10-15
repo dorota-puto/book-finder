@@ -11,3 +11,18 @@
 .text-input:focus {
   outline-width: 0;
 }
+
+.form_error {
+  color: $blue;
+  margin: 70px 0 $m-size 0 ;
+  font-size: $font-size-small;
+  text-align: center;
+}
+
+.text-input::-webkit-input-placeholder { 
+  font-family: 'Special Elite',Helvetica, cursive;
+}
+
+.text-input::-moz-placeholder { 
+  font-family: 'Special Elite',Helvetica, cursive;
+}
