@@ -4,6 +4,9 @@ import BookList from './BookList';
 import Header from './Header'
 import { searchBook } from '../actions/search';
 import { startAddBook, startDeleteBooks } from '../actions/books';
+
+// remove me: blabla
+
 class BookDashboardPage extends React.Component {
     constructor(props) {
         super(props);

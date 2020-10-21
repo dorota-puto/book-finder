@@ -2,6 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Header from './Header'
 import { startAddBookToFavourites, startRemoveBookFromFavourites } from '../actions/favourites';
+
+// remove me: bla bla
+
 class BookDetailsPage extends React.Component {
     constructor(props) {
         super(props);
