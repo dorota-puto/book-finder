@@ -9,6 +9,7 @@ import { startAddBook, startDeleteBooks } from '../actions/books';
 
 class BookDashboardPage extends React.Component {
     constructor(props) {
+        // test commit 2
         super(props);
         this.state = {
             text: '',
