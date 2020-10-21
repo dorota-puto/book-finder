@@ -7,7 +7,7 @@ import { startAddBookToFavourites, startRemoveBookFromFavourites } from '../acti
 
 class BookDetailsPage extends React.Component {
     constructor(props) {
-        // test commit 3
+// resolved conflict
         super(props);
 
         this.state = props.isFavourite ? { ...props.isFavourite } : { ...props.book }
