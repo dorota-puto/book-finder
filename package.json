@@ -1,8 +1,8 @@
 {
-  "name": "expensify",
+  "name": "Book-Finder",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Andrew Mead",
+  "author": "Dorota Puto",
   "license": "MIT",
   "scripts": {
     "serve": "live-server public/",
