@@ -11,6 +11,6 @@
 }
 
 .layout--grey {
-    background-image: none;
-    background-color: $off-white;
+   background: linear-gradient(rgba(0, 0, 0, 0.500), rgba(0, 0, 0, 0.500)), url('/images/bg2.jpg');
+   background-size: cover;
 }
