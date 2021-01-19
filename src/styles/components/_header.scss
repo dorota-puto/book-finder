@@ -2,6 +2,9 @@
   font-size: $font-size-large;
   font-weight: 800;
   width: 80%;
+  @media (max-width: $desktop-breakpoint) {
+    font-size: $font-size-small;
+  }
 }
 
 .header__links {
@@ -16,4 +19,5 @@
   text-decoration: none;
   display: flex;
   justify-content: center;
+  text-align: center;
 }
