@@ -4,7 +4,7 @@
 
 Web application utilizing Google Book REST API to allow users to search for books and keep track of favourites ones. 
 
-## Link to application
+## Demo
 
 https://bookfinder-puto.netlify.app/
 
