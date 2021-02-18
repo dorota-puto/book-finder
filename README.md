@@ -1,5 +1,7 @@
 # Book Finder
 
+![BookFinderScreenshot](https://user-images.githubusercontent.com/53584321/108410020-30072e00-7227-11eb-8fd8-19c37dddec16.jpg)
+
 ## Main project idea
 
 Web application utilizing Google Book REST API to allow users to search for books and keep track of favourites ones. 
@@ -7,6 +9,7 @@ Web application utilizing Google Book REST API to allow users to search for book
 ## Demo
 
 https://bookfinder-puto.netlify.app/
+
 
 ## Gained sills
 * Learned how to create a React based application from scratch.
@@ -23,3 +26,5 @@ https://bookfinder-puto.netlify.app/
 * JavaScript
 * HTML, CSS
 * npm, webpack
+
+
